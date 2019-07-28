@@ -15,8 +15,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR csCmd, in
 	wndClass.cbWndExtra = 0;
 	wndClass.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
 	wndClass.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wndClass.hIcon = LoadIcon(NULL, MAKEINTRESOURCE(MyIcon));
-	wndClass.hIconSm = LoadIcon(NULL, MAKEINTRESOURCE(MyIcon));
+	wndClass.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(MyIcon));
+	wndClass.hIconSm = LoadIcon(hInstance, MAKEINTRESOURCE(MyIcon));
 	wndClass.hInstance = hInstance;
 	wndClass.lpfnWndProc = WndProc;
 	wndClass.lpszClassName = szAppName;

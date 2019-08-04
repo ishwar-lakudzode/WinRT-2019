@@ -1,0 +1,3 @@
+﻿  MultiColor.cpp
+D:\Win32 Assignments\WinRT-2019\MultiColorKeyPressAss7\MultiColorKeyPressAss7\MultiColor.cpp(50,8): warning C4101:  'str': unreferenced local variable
+  MultiColorKeyPressAss7.vcxproj -> D:\Win32 Assignments\WinRT-2019\MultiColorKeyPressAss7\Debug\MultiColorKeyPressAss7.exe

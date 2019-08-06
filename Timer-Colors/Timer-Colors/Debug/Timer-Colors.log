@@ -1,0 +1,3 @@
+﻿  TimerMultiColorBK.cpp
+D:\Win32 Assignments\WinRT-2019\Timer-Colors\Timer-Colors\TimerMultiColorBK.cpp(51,8): warning C4101:  'str': unreferenced local variable
+  Timer-Colors.vcxproj -> D:\Win32 Assignments\WinRT-2019\Timer-Colors\Debug\Timer-Colors.exe

@@ -1,0 +1,8 @@
+﻿  ClassFactoryDllServerWithRegFile.cpp
+     Creating library D:\Win32 Assignments\WinRT-2019\COM\ClassFactoryWithRegFile\Server\ClassFactoryDllServerWithRegFile\x64\Release\ClassFactoryDllServerWithRegFile.lib and object D:\Win32 Assignments\WinRT-2019\COM\ClassFactoryWithRegFile\Server\ClassFactoryDllServerWithRegFile\x64\Release\ClassFactoryDllServerWithRegFile.exp
+  Generating code
+  1 of 29 functions ( 3.4%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  ClassFactoryDllServerWithRegFile.vcxproj -> D:\Win32 Assignments\WinRT-2019\COM\ClassFactoryWithRegFile\Server\ClassFactoryDllServerWithRegFile\x64\Release\ClassFactoryDllServerWithRegFile.dll

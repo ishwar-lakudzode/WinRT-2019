@@ -1,0 +1,8 @@
+﻿  ClientOfClassFactoryDllServer.cpp
+D:\Win32 Assignments\WinRT-2019\COM\ClassFactoryWithRegFile\Client\ClientOfClassFactoryDllServerFile\ClientOfClassFactoryDllServerFile\ClientOfClassFactoryDllServer.cpp(54,12): warning C4244:  'return': conversion from 'WPARAM' to 'int', possible loss of data
+  Generating code
+  2 of 2 functions (100.0%) were compiled.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  ClientOfClassFactoryDllServerFile.vcxproj -> D:\Win32 Assignments\WinRT-2019\COM\ClassFactoryWithRegFile\Client\ClientOfClassFactoryDllServerFile\x64\Release\ClientOfClassFactoryDllServerFile.exe

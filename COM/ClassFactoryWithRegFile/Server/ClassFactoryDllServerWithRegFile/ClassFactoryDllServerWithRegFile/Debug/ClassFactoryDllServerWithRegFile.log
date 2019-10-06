@@ -1,0 +1,4 @@
+﻿  ClassFactoryDllServerWithRegFile.cpp
+  LINK : D:\Win32 Assignments\WinRT-2019\COM\ClassFactoryWithRegFile\Server\ClassFactoryDllServerWithRegFile\Debug\ClassFactoryDllServerWithRegFile.dll not found or not built by the last incremental link; performing full link
+     Creating library D:\Win32 Assignments\WinRT-2019\COM\ClassFactoryWithRegFile\Server\ClassFactoryDllServerWithRegFile\Debug\ClassFactoryDllServerWithRegFile.lib and object D:\Win32 Assignments\WinRT-2019\COM\ClassFactoryWithRegFile\Server\ClassFactoryDllServerWithRegFile\Debug\ClassFactoryDllServerWithRegFile.exp
+  ClassFactoryDllServerWithRegFile.vcxproj -> D:\Win32 Assignments\WinRT-2019\COM\ClassFactoryWithRegFile\Server\ClassFactoryDllServerWithRegFile\Debug\ClassFactoryDllServerWithRegFile.dll

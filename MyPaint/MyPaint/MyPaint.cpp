@@ -183,10 +183,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 			}
 		}
-		if ((wParam == 43 || wParam == 107) && iTime < 10000)
-			iTime += 50;
-		else if ((wParam == 45 || wParam == 109) && iTime > 10)
-			iTime -= 50;
+
+		if (iKeyVal == 4)
+		{
+			if ((wParam == 187 || wParam == 43 || wParam == 107) && iTime < 10000)
+				iTime += 50;
+			else if ((wParam == 189 || wParam == 45 || wParam == 109) && iTime > 10)
+				iTime -= 50;
+		}
 		break;
 	case WM_LBUTTONDOWN:
 		bStartDraw = true;

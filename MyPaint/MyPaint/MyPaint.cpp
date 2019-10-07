@@ -1,6 +1,8 @@
 #include "windows.h"
 #include "tchar.h"
 
+#define TimerID 201
+
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR szCmdLine, int nCmdShow)
@@ -50,7 +52,17 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	static int iStartX, iStartY, iEndX, iEndY, iXpoint, iYpoint, iKeyVal;
 	TCHAR szBuff[255];
 	RECT rect;
-
+	RECT rectTemp;
+	static int iPaintFlag = -1;
+	static int iThresold = 10;
+	static RECT RectNew;
+	static int iCenterX = 0;
+	int iCenterY = 0;
+	int iVal = 0;
+	static int iRed = 50;
+	static int iGreen = 100;
+	static int iBlue = 100;
+	
 	switch (message)
 	{
 	case WM_SIZE:
@@ -67,8 +79,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		TextOut(hdc, 10, 50, szBuff, _tcslen(szBuff));
 		swprintf_s(szBuff, TEXT("Press Shift+L to draw Line"));
 		TextOut(hdc, 10, 70, szBuff, _tcslen(szBuff));
-		swprintf_s(szBuff, TEXT("Press Shift+C to Clear"));
+		swprintf_s(szBuff, TEXT("Press Shift+A to Auto Draw"));
 		TextOut(hdc, 10, 90, szBuff, _tcslen(szBuff));
+		swprintf_s(szBuff, TEXT("Press Shift+C to Clear"));
+		TextOut(hdc, 10, 110, szBuff, _tcslen(szBuff));
 
 		if (iKeyVal == 1)
 		{
@@ -93,6 +107,18 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 			DeleteObject(hPen);
 		}
+		else if (iKeyVal == 4)
+		{
+			GetClientRect(hWnd, &RectNew);
+			iCenterX = RectNew.right/2;
+			iCenterY = RectNew.bottom;
+			HBRUSH hBrush = CreateSolidBrush(RGB(iRed, 0, iThresold));
+			SelectObject(hdc, hBrush);
+			iStartX = iCenterX - iThresold;
+			iStartY = iCenterY - iThresold;
+			Ellipse(hdc, iStartX, iStartY, iCenterX + iThresold, iCenterY + iThresold);
+			DeleteObject(hBrush);
+		}
 
 		EndPaint(hWnd, &ps);
 		break;
@@ -111,6 +137,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				break;
 			case 76:
 				iKeyVal = 3;
+				break;
+			case 65:
+				iKeyVal = 4;
+				SetTimer(hWnd, TimerID, 50, NULL);
 				break;
 			case 67:
 				iKeyVal = 0;
@@ -146,6 +176,24 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			InvalidateRect(hWnd, &rect, true);
 		}
 
+		break;
+	case WM_TIMER:
+		KillTimer(hWnd, TimerID);
+		iThresold+=10;
+		iRed += 30;
+		iGreen += 30;
+		iBlue += 30;
+		iVal = iCenterX + iThresold;
+		GetClientRect(hWnd, &rectTemp);
+		if (iVal > rectTemp.right)
+		{
+			iThresold = 10;
+			iRed = 50;
+			iGreen = 150;
+			iBlue = 150;
+		}
+		InvalidateRect(hWnd, NULL, TRUE);
+		SetTimer(hWnd, TimerID, 50, NULL);
 		break;
 	case WM_DESTROY:
 		PostQuitMessage(0);

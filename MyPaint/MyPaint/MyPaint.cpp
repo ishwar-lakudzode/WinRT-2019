@@ -60,8 +60,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	int iCenterY = 0;
 	int iVal = 0;
 	static int iRed = 50;
-	static int iGreen = 100;
-	static int iBlue = 100;
+	static int iTime = 100;
 	int iCenterXTemp = 0;
 	int iCenterYTemp = 0;
 	HBRUSH hBrushTemp = NULL;
@@ -74,19 +73,21 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		break;
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
-		swprintf_s(szBuff, TEXT("Window Size : x - %d , y - %d"), iXpoint, iYpoint);
-		TextOut(hdc, 10, 10, szBuff, _tcslen(szBuff));
-		swprintf_s(szBuff, TEXT("Press Shift+R to draw Rectangle"));
-		TextOut(hdc, 10, 30, szBuff, _tcslen(szBuff));
-		swprintf_s(szBuff, TEXT("Press Shift+E to draw Ellipse"));
-		TextOut(hdc, 10, 50, szBuff, _tcslen(szBuff));
-		swprintf_s(szBuff, TEXT("Press Shift+L to draw Line"));
-		TextOut(hdc, 10, 70, szBuff, _tcslen(szBuff));
-		swprintf_s(szBuff, TEXT("Press Shift+A to Auto Draw"));
-		TextOut(hdc, 10, 90, szBuff, _tcslen(szBuff));
-		swprintf_s(szBuff, TEXT("Press Shift+C to Clear"));
-		TextOut(hdc, 10, 110, szBuff, _tcslen(szBuff));
-
+		if (iKeyVal != 4)
+		{
+			swprintf_s(szBuff, TEXT("Window Size : x - %d , y - %d"), iXpoint, iYpoint);
+			TextOut(hdc, 10, 10, szBuff, _tcslen(szBuff));
+			swprintf_s(szBuff, TEXT("Press Shift+R to draw Rectangle"));
+			TextOut(hdc, 10, 30, szBuff, _tcslen(szBuff));
+			swprintf_s(szBuff, TEXT("Press Shift+E to draw Ellipse"));
+			TextOut(hdc, 10, 50, szBuff, _tcslen(szBuff));
+			swprintf_s(szBuff, TEXT("Press Shift+L to draw Line"));
+			TextOut(hdc, 10, 70, szBuff, _tcslen(szBuff));
+			swprintf_s(szBuff, TEXT("Press Shift+A to Auto Draw"));
+			TextOut(hdc, 10, 90, szBuff, _tcslen(szBuff));
+			swprintf_s(szBuff, TEXT("Press Shift+C to Clear"));
+			TextOut(hdc, 10, 110, szBuff, _tcslen(szBuff));
+		}
 		if (iKeyVal == 1)
 		{
 			HPEN hPen = CreatePen(PS_DASH, 1, RGB(255, 0, 0));
@@ -182,6 +183,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 			}
 		}
+		if ((wParam == 43 || wParam == 107) && iTime < 10000)
+			iTime += 50;
+		else if ((wParam == 45 || wParam == 109) && iTime > 10)
+			iTime -= 50;
 		break;
 	case WM_LBUTTONDOWN:
 		bStartDraw = true;
@@ -213,19 +218,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		KillTimer(hWnd, TimerID);
 		iThresold+=10;
 		iRed += 30;
-		iGreen += 30;
-		iBlue += 30;
 		iVal = iCenterX + iThresold;
 		GetClientRect(hWnd, &rectTemp);
 		if (iVal > rectTemp.right)
 		{
 			iThresold = 10;
 			iRed = 50;
-			iGreen = 150;
-			iBlue = 150;
 		}
 		InvalidateRect(hWnd, NULL, TRUE);
-		SetTimer(hWnd, TimerID, 100, NULL);
+		SetTimer(hWnd, TimerID, iTime, NULL);
 		break;
 	case WM_DESTROY:
 		PostQuitMessage(0);

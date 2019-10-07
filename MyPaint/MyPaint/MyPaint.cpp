@@ -62,6 +62,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	static int iRed = 50;
 	static int iGreen = 100;
 	static int iBlue = 100;
+	int iCenterXTemp = 0;
+	int iCenterYTemp = 0;
+	HBRUSH hBrushTemp = NULL;
 	
 	switch (message)
 	{
@@ -112,12 +115,39 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			GetClientRect(hWnd, &RectNew);
 			iCenterX = RectNew.right/2;
 			iCenterY = RectNew.bottom;
-			HBRUSH hBrush = CreateSolidBrush(RGB(iRed, 0, iThresold));
-			SelectObject(hdc, hBrush);
+			hBrushTemp = CreateSolidBrush(RGB(iRed, 0, iThresold));
+			SelectObject(hdc, hBrushTemp);
 			iStartX = iCenterX - iThresold;
 			iStartY = iCenterY - iThresold;
 			Ellipse(hdc, iStartX, iStartY, iCenterX + iThresold, iCenterY + iThresold);
-			DeleteObject(hBrush);
+			DeleteObject(hBrushTemp);
+
+			hBrushTemp = CreateSolidBrush(RGB(iRed, 255, iThresold));
+			SelectObject(hdc, hBrushTemp);
+			iCenterXTemp = RectNew.right;
+			iCenterYTemp = RectNew.bottom/2;
+			iStartX = iCenterXTemp - iThresold;
+			iStartY = iCenterYTemp - iThresold;
+			Ellipse(hdc, iStartX, iStartY, iCenterXTemp + iThresold, iCenterYTemp + iThresold);
+			DeleteObject(hBrushTemp);
+
+			hBrushTemp = CreateSolidBrush(RGB(iRed, 125, iThresold));
+			SelectObject(hdc, hBrushTemp);
+			iCenterXTemp = RectNew.left;
+			iCenterYTemp = RectNew.bottom / 2;
+			iStartX = iCenterXTemp - iThresold;
+			iStartY = iCenterYTemp - iThresold;
+			Ellipse(hdc, iStartX, iStartY, iCenterXTemp + iThresold, iCenterYTemp + iThresold);
+			DeleteObject(hBrushTemp);
+
+			hBrushTemp = CreateSolidBrush(RGB(125, 125, iThresold));
+			SelectObject(hdc, hBrushTemp);
+			iCenterXTemp = RectNew.right / 2;
+			iCenterYTemp = RectNew.top;
+			iStartX = iCenterXTemp - iThresold;
+			iStartY = iCenterYTemp - iThresold;
+			Ellipse(hdc, iStartX, iStartY, iCenterXTemp + iThresold, iCenterYTemp + iThresold);
+			DeleteObject(hBrushTemp);
 		}
 
 		EndPaint(hWnd, &ps);
@@ -144,6 +174,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				break;
 			case 67:
 				iKeyVal = 0;
+				iThresold = 10;
+				iRed = 50;
 				GetClientRect(hWnd, &rect);
 				InvalidateRect(hWnd, &rect, true);
 				break;
@@ -193,7 +225,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			iBlue = 150;
 		}
 		InvalidateRect(hWnd, NULL, TRUE);
-		SetTimer(hWnd, TimerID, 50, NULL);
+		SetTimer(hWnd, TimerID, 100, NULL);
 		break;
 	case WM_DESTROY:
 		PostQuitMessage(0);

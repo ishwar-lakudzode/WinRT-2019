@@ -1,0 +1,7 @@
+﻿  ContainmentInnerComponentWithRegFile.cpp
+     Creating library D:\Win32 Assignments\WinRT-2019\COM\Containment\Server\InnerServer\ContainmentInnerComponentWithRegFile\x64\Release\ContainmentInnerComponentWithRegFile.lib and object D:\Win32 Assignments\WinRT-2019\COM\Containment\Server\InnerServer\ContainmentInnerComponentWithRegFile\x64\Release\ContainmentInnerComponentWithRegFile.exp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 29 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  ContainmentInnerComponentWithRegFile.vcxproj -> D:\Win32 Assignments\WinRT-2019\COM\Containment\Server\InnerServer\ContainmentInnerComponentWithRegFile\x64\Release\ContainmentInnerComponentWithRegFile.dll

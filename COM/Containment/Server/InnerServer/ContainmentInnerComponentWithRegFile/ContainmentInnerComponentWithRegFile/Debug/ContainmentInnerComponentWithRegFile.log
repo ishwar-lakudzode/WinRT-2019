@@ -1,0 +1,4 @@
+﻿  ContainmentInnerComponentWithRegFile.cpp
+  LINK : D:\Win32 Assignments\WinRT-2019\COM\Containment\Server\InnerServer\ContainmentInnerComponentWithRegFile\Debug\ContainmentInnerComponentWithRegFile.dll not found or not built by the last incremental link; performing full link
+     Creating library D:\Win32 Assignments\WinRT-2019\COM\Containment\Server\InnerServer\ContainmentInnerComponentWithRegFile\Debug\ContainmentInnerComponentWithRegFile.lib and object D:\Win32 Assignments\WinRT-2019\COM\Containment\Server\InnerServer\ContainmentInnerComponentWithRegFile\Debug\ContainmentInnerComponentWithRegFile.exp
+  ContainmentInnerComponentWithRegFile.vcxproj -> D:\Win32 Assignments\WinRT-2019\COM\Containment\Server\InnerServer\ContainmentInnerComponentWithRegFile\Debug\ContainmentInnerComponentWithRegFile.dll

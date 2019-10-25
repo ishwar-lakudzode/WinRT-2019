@@ -7,3 +7,5 @@ Using this application we an draw line, rectangle, circle(Ellips) etc.
    press - button to speed up animation.
 
 you need to press multiple time + and - button for speed control
+
+5. At any time clear screen or stop animation press Shift+C
